@@ -1,6 +1,6 @@
-<!--##9091741d-431d-4f8a-b0e1-334e1209a1a6##-->
+<!--##94e0915b-2452-4610-b1c6-5531e7877ca4##-->
 <!--##PAMODM01800##-->
-<!--##B2w189RoJsyzxkns8lU1jwS5tMvClemDMn6HaQ+YMas=##-->
+<!--##T86pMZNNzcVRmWA1pJuzMajS8bqBiC7sYsrtejNeoMM=##-->
 <!--
   DEWS UI/UX IDE - Build Result - v1.5
   # PageID: PAMODM01800
@@ -243,11 +243,12 @@
                     // // 서비스 파라미터명과 데이터소스명이 다른경우
                     // @dzParam (key를 serviceParameter라고 부름) //dews.api.post 하면 Promise 객체 반환
     
-                    dews.api.post(dews.url.getApiUrl('HR', 'PAMODM01800Service', 'SSSSAAAAVVVVEEEE'), { // dews.url.getApiUrl
+                    dews.api.post(dews.url.getApiUrl('HR', 'PAMODM01800Service', 'pamodm01800_save'), { // dews.url.getApiUrl
                         async: false,
                         data: {
                             //ServiceParameterName : ServiceParameterValue
-                            saveData: JSON.stringify(self.ds1.getDirtyData()) //서비스 파라미터 명
+                            dataSourceMst: JSON.stringify(self.ds1.getDirtyData()), //서비스 파라미터 명
+                            COMPANY_CD: 'EWP'
                         }
                     }).done(function (data) {
                         dews.ui.snackbar.ok('자료가 정상적으로 저장되었습니다.');

@@ -5,9 +5,9 @@
       <version>1.0</version>
       <create>tjqkd0912</create>
       <modify>tjqkd0912</modify>
-      <builddate>2023-08-20T22:05:30.6633924+09:00</builddate>
+      <builddate>2023-08-21T00:42:15.1788696+09:00</builddate>
       <createdate>2023-08-19T16:24:30.0402565+09:00</createdate>
-      <modifieddate>2023-08-20T22:05:30.6633924+09:00</modifieddate>
+      <modifieddate>2023-08-21T00:42:15.1788696+09:00</modifieddate>
     </pageInformation>
     <mainButtons uid="mainButtons-1385142915113">
       <mainButton uid="mainButton-1485142971049" id="information" buttonAttr="normal" type="information" />
@@ -491,11 +491,12 @@ self.mainButtons.delete.useDefaultConfirm = false;
                 // // 서비스 파라미터명과 데이터소스명이 다른경우
                 // @dzParam (key를 serviceParameter라고 부름) //dews.api.post 하면 Promise 객체 반환
 
-                dews.api.post(dews.url.getApiUrl('HR', 'PAMODM01800Service', 'SSSSAAAAVVVVEEEE'), { // dews.url.getApiUrl
+                dews.api.post(dews.url.getApiUrl('HR', 'PAMODM01800Service', 'pamodm01800_save'), { // dews.url.getApiUrl
                     async: false,
                     data: {
                         //ServiceParameterName : ServiceParameterValue
-                        saveData: JSON.stringify(self.ds1.getDirtyData()) //서비스 파라미터 명
+                        dataSourceMst: JSON.stringify(self.ds1.getDirtyData()), //서비스 파라미터 명
+                        COMPANY_CD: 'EWP'
                     }
                 }).done(function (data) {
                     dews.ui.snackbar.ok('자료가 정상적으로 저장되었습니다.');
