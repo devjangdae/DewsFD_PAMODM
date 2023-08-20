@@ -5,20 +5,20 @@
       <version>1.0</version>
       <create>tjqkd0912</create>
       <modify>tjqkd0912</modify>
-      <builddate>2023-08-20T16:40:47.4828065+09:00</builddate>
+      <builddate>2023-08-20T22:00:39.9090919+09:00</builddate>
       <createdate>2023-08-19T16:24:30.0402565+09:00</createdate>
-      <modifieddate>2023-08-20T16:40:47.4828065+09:00</modifieddate>
+      <modifieddate>2023-08-20T22:00:39.9090919+09:00</modifieddate>
     </pageInformation>
     <mainButtons uid="mainButtons-1385142915113">
       <mainButton uid="mainButton-1485142971049" id="information" buttonAttr="normal" type="information" />
       <mainButton uid="mainButton-1485142971050" id="localize" buttonAttr="disabled" type="localize" />
       <mainButton uid="mainButton-1485142971051" id="approval" buttonAttr="normal" type="approval" />
       <mainButton uid="mainButton-1485142971058" id="etn-approval" buttonAttr="normal" type="etn-approval" />
-      <mainButton uid="mainButton-1485142971052" id="add" buttonAttr="normal" type="add" />
+      <mainButton uid="mainButton-1485142971052" id="add" buttonAttr="normal" type="add" click="d1cbdcb0-8f4b-4a3e-9937-683f712ca116" />
       <mainButton uid="mainButton-1485142971053" id="search" buttonAttr="normal" type="search" click="3516b08b-047a-4054-b023-cb9f10a0b781" />
-      <mainButton uid="mainButton-1485142971054" id="delete" buttonAttr="normal" type="delete" />
+      <mainButton uid="mainButton-1485142971054" id="delete" buttonAttr="normal" type="delete" click="0776659b-4e6d-4205-ae3d-e32d41f0c831" />
       <mainButton uid="mainButton-1485142971055" id="print" buttonAttr="normal" type="print" />
-      <mainButton uid="mainButton-1485142971056" id="save" buttonAttr="normal" type="save" />
+      <mainButton uid="mainButton-1485142971056" id="save" buttonAttr="normal" type="save" click="78e0612d-4142-4edb-9167-158e5496e7a0" />
       <mainButton uid="mainButton-1485142971057" id="configure" buttonAttr="normal" type="configure" />
     </mainButtons>
     <conditionPanel uid="conditionPanel-fc07f1d2" id="conditionpanel1" margin="false" optional="true" optionalcollapsed="true" columnLength="3" labelAlign="right">
@@ -49,9 +49,9 @@
     </conditionPanel>
     <containerPanel uid="containerPanel-568a0646" id="containerpanel1" height_type="px" fitBottom="true" containerResize="false">
       <containerItem uid="containerItem-d5ac68b4" id="containerpanelitem1" width_type="px" location="normal">
-        <grid uid="grid-7dd1bb29" mockupData="" id="grid1" dataSource="ds1" height_type="px" editable="false" movable="false" rowNo="true" selectable="false" checkable="false" pasteAddRowEvent="false" sortable="false" shiftCheck="false" autoBind="true" requiredCheck="false" stateColumn="false" noData="false" noDataMessage="데이터가 없습니다" fillWidth="true" resizable="true" contextType="Boolean" context="false" contextex="true" skipEdit="false" copyMode="cell" multiFooterCnt="0" multiHeaderSummaryCnt="0" useGridUserGroup="false" rowStyle="">
+        <grid uid="grid-7dd1bb29" mockupData="" id="grid1" dataSource="ds1" height_type="px" editable="true" movable="false" rowNo="true" selectable="false" checkable="true" pasteAddRowEvent="false" sortable="false" shiftCheck="false" autoBind="true" requiredCheck="false" stateColumn="false" noData="false" noDataMessage="데이터가 없습니다" fillWidth="true" resizable="true" contextType="Boolean" context="false" contextex="true" skipEdit="false" copyMode="cell" multiFooterCnt="0" multiHeaderSummaryCnt="0" useGridUserGroup="false" rowStyle="">
           <columns>
-            <column uid="d466331a-9dcd-40c8-a4a9-ab53aa923970" field="EMP_NO" title="사원번호" width="60" align="center" editSkip="false" sortable="true" filter="true" visible="true" hideChildHeaders="false" mergeType="Boolean" merge="false" mergeString="" editingMergedRow="false" grouping="false" groupable="true" movable="true" showTooltip="false" attributes="none" footerType="object" headerType="object">
+            <column uid="d466331a-9dcd-40c8-a4a9-ab53aa923970" field="EMP_NO" title="사원번호" width="60" align="center" editSkip="false" sortable="true" filter="true" visible="true" hideChildHeaders="false" mergeType="Boolean" merge="false" mergeString="" editingMergedRow="false" grouping="false" groupable="true" movable="true" showTooltip="false" attributes="required" footerType="object" headerType="object">
               <mergeObject innerFocus="true" verticalTop="false" referenceFieldType="String" referenceField="">
                 <referenceFieldArray />
               </mergeObject>
@@ -62,12 +62,8 @@
               <footerCollection />
               <headerSummary predefined="false" currency_type="value" currency="" align="center" />
               <headerSummaryCollection />
-              <formats>
-                <DesignerControl />
-              </formats>
-              <editor>
-                <DesignerControl />
-              </editor>
+              <formats />
+              <editor />
               <customExport check="" />
             </column>
             <column uid="17236a05-8784-4399-b745-1989e9f30603" field="KOR_NM" title="성명" width="90" align="left" editSkip="false" sortable="true" filter="true" visible="true" hideChildHeaders="false" mergeType="Boolean" merge="false" mergeString="" editingMergedRow="false" grouping="false" groupable="true" movable="true" showTooltip="false" attributes="none" footerType="object" headerType="object">
@@ -81,12 +77,8 @@
               <footerCollection />
               <headerSummary predefined="false" currency_type="value" currency="" align="center" />
               <headerSummaryCollection />
-              <formats>
-                <DesignerControl />
-              </formats>
-              <editor>
-                <DesignerControl />
-              </editor>
+              <formats />
+              <editor />
               <customExport check="" />
             </column>
             <column uid="d3c90575-2a01-434a-9f65-7e00287e208f" field="DEPT_CD" title="부서코드" width="80" align="center" editSkip="false" sortable="true" filter="true" visible="true" hideChildHeaders="false" mergeType="Boolean" merge="false" mergeString="" editingMergedRow="false" grouping="false" groupable="true" movable="true" showTooltip="false" attributes="none" footerType="object" headerType="object">
@@ -100,12 +92,8 @@
               <footerCollection />
               <headerSummary predefined="false" currency_type="value" currency="" align="center" />
               <headerSummaryCollection />
-              <formats>
-                <DesignerControl />
-              </formats>
-              <editor>
-                <DesignerControl />
-              </editor>
+              <formats />
+              <editor />
               <customExport check="" />
             </column>
             <column uid="80d576aa-869c-4b48-8652-7985337f823f" field="OGRP_CD" title="직군코드" width="80" align="center" editSkip="false" sortable="true" filter="true" visible="true" hideChildHeaders="false" mergeType="Boolean" merge="false" mergeString="" editingMergedRow="false" grouping="false" groupable="true" movable="true" showTooltip="false" attributes="none" footerType="object" headerType="object">
@@ -119,12 +107,8 @@
               <footerCollection />
               <headerSummary predefined="false" currency_type="value" currency="" align="center" />
               <headerSummaryCollection />
-              <formats>
-                <DesignerControl />
-              </formats>
-              <editor>
-                <DesignerControl />
-              </editor>
+              <formats />
+              <editor />
               <customExport check="" />
             </column>
             <column uid="995359d8-6afa-4f4d-b0c3-7b0f2ae55546" field="PSTN_CD" title="직급코드" width="80" align="center" editSkip="false" sortable="true" filter="true" visible="true" hideChildHeaders="false" mergeType="Boolean" merge="false" mergeString="" editingMergedRow="false" grouping="false" groupable="true" movable="true" showTooltip="false" attributes="none" footerType="object" headerType="object">
@@ -138,12 +122,8 @@
               <footerCollection />
               <headerSummary predefined="false" currency_type="value" currency="" align="center" />
               <headerSummaryCollection />
-              <formats>
-                <DesignerControl />
-              </formats>
-              <editor>
-                <DesignerControl />
-              </editor>
+              <formats />
+              <editor />
               <customExport check="" />
             </column>
             <column uid="5a600b05-60b6-4d9c-b5ba-f7b7ecba5da2" field="JNCO_DT" title="입사일" width="80" align="center" editSkip="false" sortable="true" filter="true" visible="true" hideChildHeaders="false" mergeType="Boolean" merge="false" mergeString="" editingMergedRow="false" grouping="false" groupable="true" movable="true" showTooltip="false" attributes="none" footerType="object" headerType="object">
@@ -176,12 +156,8 @@
               <footerCollection />
               <headerSummary predefined="false" currency_type="value" currency="" align="center" />
               <headerSummaryCollection />
-              <formats>
-                <DesignerControl />
-              </formats>
-              <editor>
-                <DesignerControl />
-              </editor>
+              <formats />
+              <editor />
               <customExport check="" />
             </column>
             <column uid="6485dbca-bb80-4dd9-9905-c2cd1569552d" field="MNG_DC50" title="퇴직예정일" width="60" align="center" editSkip="false" sortable="true" filter="true" visible="true" hideChildHeaders="false" mergeType="Boolean" merge="false" mergeString="" editingMergedRow="false" grouping="false" groupable="true" movable="true" showTooltip="false" attributes="none" footerType="object" headerType="object">
@@ -195,12 +171,8 @@
               <footerCollection />
               <headerSummary predefined="false" currency_type="value" currency="" align="center" />
               <headerSummaryCollection />
-              <formats>
-                <DesignerControl />
-              </formats>
-              <editor>
-                <DesignerControl />
-              </editor>
+              <formats />
+              <editor />
               <customExport check="" />
             </column>
             <column uid="e5418966-388d-4ca8-b3ea-7be62c3d3f76" field="START_DT" title="시작일" width="80" align="center" editSkip="false" sortable="true" filter="true" visible="true" hideChildHeaders="false" mergeType="Boolean" merge="false" mergeString="" editingMergedRow="false" grouping="false" groupable="true" movable="true" showTooltip="false" attributes="none" footerType="object" headerType="object">
@@ -252,12 +224,8 @@
               <footerCollection />
               <headerSummary predefined="false" currency_type="value" currency="" align="center" />
               <headerSummaryCollection />
-              <formats>
-                <DesignerControl />
-              </formats>
-              <editor>
-                <DesignerControl />
-              </editor>
+              <formats />
+              <editor />
               <customExport check="" />
             </column>
             <column uid="bea8446b-edfc-4806-a725-b44d4823416a" field="DOF_TP" title="휴무유형" width="60" align="center" editSkip="false" sortable="true" filter="true" visible="true" hideChildHeaders="false" mergeType="Boolean" merge="false" mergeString="" editingMergedRow="false" grouping="false" groupable="true" movable="true" showTooltip="false" attributes="none" footerType="object" headerType="object">
@@ -271,12 +239,8 @@
               <footerCollection />
               <headerSummary predefined="false" currency_type="value" currency="" align="center" />
               <headerSummaryCollection />
-              <formats>
-                <DesignerControl />
-              </formats>
-              <editor>
-                <DesignerControl />
-              </editor>
+              <formats />
+              <editor />
               <customExport check="" />
             </column>
             <column uid="55f8cae1-4cc1-4d4b-953a-0893dc1a9b5d" field="START_TM" title="시작시간" width="60" align="center" editSkip="false" sortable="true" filter="true" visible="true" hideChildHeaders="false" mergeType="Boolean" merge="false" mergeString="" editingMergedRow="false" grouping="false" groupable="true" movable="true" showTooltip="false" attributes="none" footerType="object" headerType="object">
@@ -290,12 +254,8 @@
               <footerCollection />
               <headerSummary predefined="false" currency_type="value" currency="" align="center" />
               <headerSummaryCollection />
-              <formats>
-                <DesignerControl />
-              </formats>
-              <editor>
-                <DesignerControl />
-              </editor>
+              <formats />
+              <editor />
               <customExport check="" />
             </column>
             <column uid="f9375d66-04b7-4b55-8b32-7f2ce079f998" field="END_TM" title="종료시간" width="60" align="center" editSkip="false" sortable="true" filter="true" visible="true" hideChildHeaders="false" mergeType="Boolean" merge="false" mergeString="" editingMergedRow="false" grouping="false" groupable="true" movable="true" showTooltip="false" attributes="none" footerType="object" headerType="object">
@@ -309,12 +269,8 @@
               <footerCollection />
               <headerSummary predefined="false" currency_type="value" currency="" align="center" />
               <headerSummaryCollection />
-              <formats>
-                <DesignerControl />
-              </formats>
-              <editor>
-                <DesignerControl />
-              </editor>
+              <formats />
+              <editor />
               <customExport check="" />
             </column>
             <column uid="d727fef8-3370-4544-ba1b-ebd4d9e58cc8" field="DOF_TM_CNT" title="휴무시간수" width="60" align="center" editSkip="false" sortable="true" filter="true" visible="true" hideChildHeaders="false" mergeType="Boolean" merge="false" mergeString="" editingMergedRow="false" grouping="false" groupable="true" movable="true" showTooltip="false" attributes="none" footerType="object" headerType="object">
@@ -328,12 +284,8 @@
               <footerCollection />
               <headerSummary predefined="false" currency_type="value" currency="" align="center" />
               <headerSummaryCollection />
-              <formats>
-                <DesignerControl />
-              </formats>
-              <editor>
-                <DesignerControl />
-              </editor>
+              <formats />
+              <editor />
               <customExport check="" />
             </column>
             <column uid="259e5eea-1e5e-4fc2-8256-2aaa9e5dc467" field="LVE_TM_CNT" title="이탈시간수" width="60" align="center" editSkip="false" sortable="true" filter="true" visible="true" hideChildHeaders="false" mergeType="Boolean" merge="false" mergeString="" editingMergedRow="false" grouping="false" groupable="true" movable="true" showTooltip="false" attributes="none" footerType="object" headerType="object">
@@ -347,12 +299,8 @@
               <footerCollection />
               <headerSummary predefined="false" currency_type="value" currency="" align="center" />
               <headerSummaryCollection />
-              <formats>
-                <DesignerControl />
-              </formats>
-              <editor>
-                <DesignerControl />
-              </editor>
+              <formats />
+              <editor />
               <customExport check="" />
             </column>
           </columns>
@@ -430,30 +378,139 @@
   <pageCssStyle><![CDATA[]]></pageCssStyle>
   <stylesheets />
   <javascripts>
-    <javascript id="b0c72068-ba69-4099-9af5-d9863bacd226"><![CDATA[
-//self.cdp1~~~
+    <javascript id="b0c72068-ba69-4099-9af5-d9863bacd226"><![CDATA[//self.cdp1~~~
+
+// 메인버튼 삭제 버튼의 기본 확인 메시지 사용 여부 설정
+self.mainButtons.delete.useDefaultConfirm = false;
+
 
 ]]></javascript>
     <javascript id="3516b08b-047a-4054-b023-cb9f10a0b781"><![CDATA[function () {
+    // conditionPanel의 조회조건의 필수값 검사가 필요한경우
+    if (!self.conditionpanel1.validate()) {
+        return;
+    }
 
-    // TODO: 필수항목 입력을 체크한 후 데이터소스를 조회합니다.
-    // if (self.containerpanel1.validate({ tooltip: true, message: '필수 항목을 입력해 주십시요.' })) {
-    //     self.ds1.read();
-    //     alert(1);
-    // }
-    self.ds1.read();
-    alert(1);
-    // TODO: 저장여부를 확인한 후 데이터소스를 조회합니다.
-    // if (self.dataSource1.getDirtyDataCount() != 0) {
-    //   dews.confirm('저장하지 않은 데이터가 있습니다. 조회를 계속하시겠습니까?', 'ico2').yes(function () {
-    //     self.dataSource1.read();
-    //   }).no(function () {
-    //     dews.ui.snackbar.warning('취소되었습니다.');
-    //     return false;
-    //   });
-    // } else {
-    //   self.dataSource1.read();
-    // }
+    if (self.ds1.getDirtyDataCount() != 0) {
+        dews.confirm('저장하지 않은 데이터가 있습니다. \n조회를 계속하시겠습니까?', 'ico2').yes(function () {
+            self.ds1.read();
+        }).no(function () {
+            dews.ui.snackbar.warning('취소되었습니다.');
+            return false;
+        });
+    } else {
+        try {
+            dews.ui.loading.show({ // 로딩화면 보여주기
+                text: '조회중입니다.'
+            });
+            self.ds1.read();  // 데이터소스 Read
+        } catch (error) {
+            dews.ui.loading.hide();
+        }
+    }
+}]]></javascript>
+    <javascript id="d1cbdcb0-8f4b-4a3e-9937-683f712ca116"><![CDATA[function () {
+    try {
+        self.grid1.addRow();
+        //self.grid1.setCellValue(self.grid1.select(), "COMPANY_CD", '5000');
+        self.grid1.setCellValue(self.grid1.select(), "EMP_NO", 'jueunp'); // 사원번호
+        self.grid1.setCellValue(self.grid1.select(), "KOR_NM", '박주은2'); // 성명
+        self.grid1.setCellValue(self.grid1.select(), "DEPT_CD", '1000201'); // 부서코드
+        self.grid1.setCellValue(self.grid1.select(), "OGRP_CD", 'C'); // 직군코드
+        self.grid1.setCellValue(self.grid1.select(), "PSTN_CD", '2E'); // 직급코드
+
+        self.grid1.setCellValue(self.grid1.select(), "JNCO_DT", '20220211'); // 입사일
+        self.grid1.setCellValue(self.grid1.select(), "MNG_DC93", '2099-12-30'); // 승격일 ??
+        self.grid1.setCellValue(self.grid1.select(), "MNG_DC50", '2099-12-31'); // 퇴직예정일 ??
+        self.grid1.setCellValue(self.grid1.select(), "START_DT", '20230820'); // 시작일
+        self.grid1.setCellValue(self.grid1.select(), "END_DT", '20230821'); // 종료일
+
+        self.grid1.setCellValue(self.grid1.select(), "TM_CD_NM", '공통'); // 시간코드명
+        self.grid1.setCellValue(self.grid1.select(), "DOF_TP", '0001'); // 휴무유형
+        self.grid1.setCellValue(self.grid1.select(), "START_TM", '0100'); // 시작시간
+        self.grid1.setCellValue(self.grid1.select(), "END_TM", '0230'); // 종료시간
+        self.grid1.setCellValue(self.grid1.select(), "DOF_TM_CNT", '5'); // 휴무시간
+        self.grid1.setCellValue(self.grid1.select(), "LVE_TM_CNT", '0'); // 이탈시간
+
+        // self.grid1.setCellValue(self.grid1.select(), "INSERT_ID", 'tjqkd0912');
+        // self.grid1.setCellValue(self.grid1.select(), "INSERT_IP", '192.168.0.63');
+        // self.grid1.setCellValue(self.grid1.select(), "INSERT_MCADDR_NM", '');
+        // self.grid1.setCellValue(self.grid1.select(), "INSERT_DTS", '2022-08-20 10:07:33.000');
+
+        // self.grid1.setCellValue(self.grid1.select(), "UPDATE_ID", 'tjqkd0912');
+        // self.grid1.setCellValue(self.grid1.select(), "UPDATE_IP", '192.168.0.63');
+        // self.grid1.setCellValue(self.grid1.select(), "UPDATE_MCADDR_NM", '');
+        // self.grid1.setCellValue(self.grid1.select(), "UPDATE_DTS", '2022-08-20 10:07:33.000');
+    } catch (error) {
+        console.error(error);
+        dews.error(error);
+    }
+}]]></javascript>
+    <javascript id="0776659b-4e6d-4205-ae3d-e32d41f0c831"><![CDATA[function () {
+    // TODO: 삭제시 강제 팝업에 대한 알림창을 끕니다.
+    // self.mainButtons.delete.useDefaultConfirm = false; (preReady 단에 넣어 주었음)
+    try {
+        // 체크된 행 인덱스를 가진 배열
+        var checkArray = self.grid1.getCheckedIndex();
+
+        if (checkArray.length == 0) { // 체크된 행이 없다면
+            dews.ui.snackbar.warning("체크된 행이 없습니다."); // 스낵바 경고 띄우기
+            return;
+        }
+        //삭제에 대한 confirm icon : ico2
+        dews.confirm("삭제하시겠습니까?", "ico2")
+            .yes(function () {
+                // 단일행
+                // self.grid1.removeRow(self.grid1.select());
+                // 체크
+                self.grid1.removeRow(checkArray); // 체크된 행 모두 삭제하기
+                dews.ui.snackbar.info("저장을 눌러 삭제를 완료하세요.")
+            });
+    } catch (error) {
+        console.error(error);
+        dews.error(error);
+    }
+}]]></javascript>
+    <javascript id="78e0612d-4142-4edb-9167-158e5496e7a0"><![CDATA[function () {
+    // // TODO: 데이터소스를 저장합니다.
+    if (self.ds1.getDirtyDataCount() == 0) {
+        dews.alert('변경된 데이터가 없습니다.');
+        return false;
+    }
+
+    if (self.grid1.validate({ showTooltip: true }).result == false) {
+        dews.ui.snackbar.warning('필수 값이 입력되지 않은 항목이 있습니다.');
+        return false;
+    }
+
+    try {
+        // TO-BE // 아무 문제 없다면 저장 재확인하기 -> yes 누르면 창 닫고 saveData
+        dews.confirm("데이터를 저장 하시겠습니까?", "ico2").yes(function (confirm) {
+            confirm.on("closed", function () {
+                // // 서비스 파라미터명과 데이터소스명이 다른경우
+                // @dzParam (key를 serviceParameter라고 부름) //dews.api.post 하면 Promise 객체 반환
+
+                dews.api.post(dews.url.getApiUrl('HR', 'PAMODM01800Service', 'SSSSAAAAVVVVEEEE'), { // dews.url.getApiUrl
+                    async: false,
+                    data: {
+                        //ServiceParameterName : ServiceParameterValue
+                        saveData: JSON.stringify(self.ds1.getDirtyData()) //서비스 파라미터 명
+                    }
+                }).done(function (data) {
+                    dews.ui.snackbar.ok('자료가 정상적으로 저장되었습니다.');
+                    self.ds1.read(); // 재조회
+                }).fail(function (xhr, status, error) {
+                    //dews.error('저장이 실패하였습니다.', 'ico1');
+                    dews.ui.snackbar.error(error);
+                    console.error(error.responseJSON.message);
+                });
+            });
+        });
+
+    } catch (error) {
+        console.error(error);
+        dews.error(error);
+    }
 }]]></javascript>
   </javascripts>
   <settings />
