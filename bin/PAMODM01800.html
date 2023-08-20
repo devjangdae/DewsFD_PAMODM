@@ -1,6 +1,6 @@
-<!--##e630ee84-fbd8-48e2-ad6a-1a6a0e28d816##-->
+<!--##69970255-08ae-4e24-9075-52a0ba3afcac##-->
 <!--##PAMODM01800##-->
-<!--##bc0rzF69XJhswH7zIdQiiMprxJKNkud+13zptv6+zhA=##-->
+<!--##n2PcDOOSLHoeSJ5ITpT7POtgrwNnO4tqa5jootASiw0=##-->
 <!--
   DEWS UI/UX IDE - Build Result - v1.5
   # PageID: PAMODM01800
@@ -22,7 +22,7 @@
     <li>
       <label class="dews-ui-multilingual">부서</label>
       <span>
-        <select id="mcdp1" name="mcdp1" class="dews-ui-multicodepicker" data-dews-help-code="H_MA_DEPT_MST_S" data-dews-code-field="DEPT_LV" data-dews-text-field="DEPT_LV" data-dews-help-title="부서 도움창" data-dews-help-custom="false" data-dews-help-size="medium" />
+        <select id="mcdp1" name="mcdp1" class="dews-ui-multicodepicker" data-dews-help-code="H_MA_DEPT_MST_S" data-dews-code-field="DEPT_CD" data-dews-text-field="DEPT_NM" data-dews-help-title="부서 도움창" data-dews-help-custom="false" data-dews-help-size="medium" />
       </span>
     </li>
     <li>
@@ -34,9 +34,9 @@
   </ul>
   <ul class="optional-area">
     <li>
-      <label class="dews-ui-multilingual">휴무유형</label>
+      <label class="dews-ui-multilingual">라벨</label>
       <span>
-        <select id="mcdp2" name="mcdp2" class="dews-ui-multicodepicker basic" data-dews-help-custom="false" data-dews-help-size="medium" />
+        <select id="ddl1" name="ddl1" class="dews-ui-dropdownlist basic" data-dews-value-field="SYSDEF_CD" data-dews-text-field="SYSDEF_NM" data-dews-show-tooltip="true" data-dews-option-label-value="" data-dews-option-label-text="" data-dews-show-value-tooltip="true" data-dews-use-numkey="false"></select>
       </span>
     </li>
   </ul>
@@ -74,11 +74,11 @@
           url: dews.url.getApiUrl('HR', 'PAMODM01800Service', 'pamodm01800_listMaster'),
           data: function () {
             return {
-              dof_tp: self.mcdp2.texts().join('|'),
               start_dt: self.pp1.getStartDate(),
               end_dt: self.pp1.getEndDate(),
-              dept_cd: self.mcdp1.texts().join('|'),
-              company_cd: self.cdp1.code()
+              dept_cd: self.mcdp1.codes().join('|'),
+              company_cd: self.cdp1.code(),
+              dof_tp: self.ddl1.value()
             };
           }
         }
@@ -107,6 +107,30 @@
         }
       }
     });
+    dews.api.get(dews.url.getApiUrl('CM', 'CommonCodeDtlService', 'common_ci_codeDtl_list'),{
+      async: false,
+      data: {
+          end_dt: '',
+          foreign_yn: '',
+          field_cd_pipe: 'ZC01_10005',
+          module_cd: 'HR',
+          syscode_yn: '',
+          keyword: '',
+          base_yn: ''
+      }
+    }).done(function (data) {
+      var ar_ZC01_10005 = new Array();
+    
+      for (var i = 0; i < data.length; i++) {
+        if (data[i].FIELD_CD == "ZC01_10005") { 
+          ar_ZC01_10005.push(data[i]); 
+    
+        }
+      }
+      self.pipeData_ZC01_10005 = dews.ui.dataSource('pipeData_ZC01_10005',  { data: ar_ZC01_10005 });
+      self.pipeData = dews.ui.dataSource('pipeData', { data: data });
+      
+    });
     
     
     dews.ui.mainbuttons.localize.disable(true);
@@ -131,6 +155,7 @@
         //   self.dataSource1.read();
         // }
     });
+    self.ddl1.setDataSource(self.pipeData_ZC01_10005);
     dews.ui.grid(self.$grid1, {
       dataSource: self.ds1,
       sortable: false,
