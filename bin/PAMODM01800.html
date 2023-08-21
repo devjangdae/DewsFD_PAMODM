@@ -1,6 +1,6 @@
-<!--##94e0915b-2452-4610-b1c6-5531e7877ca4##-->
+<!--##d4100601-1ba7-4e8c-9be2-4b18806ba820##-->
 <!--##PAMODM01800##-->
-<!--##T86pMZNNzcVRmWA1pJuzMajS8bqBiC7sYsrtejNeoMM=##-->
+<!--##u6nNPEQ5AOMiU6GWsXuQKlRKF5dGNiYuZo1enq+zWdo=##-->
 <!--
   DEWS UI/UX IDE - Build Result - v1.5
   # PageID: PAMODM01800
@@ -247,8 +247,7 @@
                         async: false,
                         data: {
                             //ServiceParameterName : ServiceParameterValue
-                            dataSourceMst: JSON.stringify(self.ds1.getDirtyData()), //서비스 파라미터 명
-                            COMPANY_CD: 'EWP'
+                            dataSourceMst: JSON.stringify(self.ds1.getDirtyData()) //서비스 파라미터 명
                         }
                     }).done(function (data) {
                         dews.ui.snackbar.ok('자료가 정상적으로 저장되었습니다.');
@@ -283,27 +282,32 @@
           field: 'KOR_NM',
           title: '성명',
           width: 90,
-          align: 'left'
+          align: 'left',
+          attributes: { class: 'readonly' }
         },
         {
           field: 'DEPT_CD',
           title: '부서코드',
-          width: 80
+          width: 80,
+          attributes: { class: 'readonly' }
         },
         {
           field: 'OGRP_CD',
           title: '직군코드',
-          width: 80
+          width: 80,
+          attributes: { class: 'readonly' }
         },
         {
           field: 'PSTN_CD',
           title: '직급코드',
-          width: 80
+          width: 80,
+          attributes: { class: 'readonly' }
         },
         {
           field: 'JNCO_DT',
           title: '입사일',
           width: 80,
+          attributes: { class: 'readonly' },
           formats: {
             type: 'date',
             format: 'yyyy-MM-dd'
@@ -316,17 +320,20 @@
         {
           field: 'MNG_DC93',
           title: '승격일',
-          width: 60
+          width: 60,
+          attributes: { class: 'readonly' }
         },
         {
           field: 'MNG_DC50',
           title: '퇴직예정일',
-          width: 60
+          width: 60,
+          attributes: { class: 'readonly' }
         },
         {
           field: 'START_DT',
           title: '시작일',
           width: 80,
+          attributes: { class: 'required' },
           formats: {
             type: 'date',
             format: 'yyyy-MM-dd'
@@ -340,6 +347,7 @@
           field: 'END_DT',
           title: '종료일',
           width: 80,
+          attributes: { class: 'required' },
           formats: {
             type: 'date',
             format: 'yyyy-MM-dd'
@@ -353,7 +361,8 @@
           field: 'TM_CD_NM',
           title: '시간코드명',
           width: 90,
-          align: 'left'
+          align: 'left',
+          attributes: { class: 'readonly' }
         },
         {
           field: 'DOF_TP',
