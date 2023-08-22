@@ -1,6 +1,6 @@
-<!--##d4ccad3a-f69e-432c-b277-6dd8edf02670##-->
+<!--##517c7883-98d1-4a4a-8e1f-4da23cb3e8bf##-->
 <!--##PAMODM01800##-->
-<!--##71WA2ZxHC+3wzXAiRngWuDmDSU2wtrgq6Bnpf+IGzaU=##-->
+<!--##8dGac6EPOuXIq34+VrGSj+MIzjp8sXJX4oqO6nfeWbE=##-->
 <!--
   DEWS UI/UX IDE - Build Result - v1.5
   # PageID: PAMODM01800
@@ -16,27 +16,33 @@
     <li>
       <label class="dews-ui-multilingual">사업장</label>
       <span>
-        <input type="text" id="cdp1" name="cdp1" class="dews-ui-codepicker" data-dews-help-code="H_MA_COMPANY_S" data-dews-code-field="COMPANY_CD" data-dews-text-field="COMPANY_NM" data-dews-help-title="회사 도움창" data-dews-help-custom="false" data-dews-help-size="medium" data-dews-use-keyword="false" />
+        <input type="text" id="s_COMPANY_CD" name="s_COMPANY_CD" class="dews-ui-codepicker" data-dews-help-code="H_MA_COMPANY_S" data-dews-code-field="COMPANY_CD" data-dews-text-field="COMPANY_NM" data-dews-help-title="회사 도움창" data-dews-help-custom="false" data-dews-help-size="medium" data-dews-use-keyword="false" />
       </span>
     </li>
     <li>
       <label class="dews-ui-multilingual">부서</label>
       <span>
-        <select id="mcdp1" name="mcdp1" class="dews-ui-multicodepicker" data-dews-help-code="H_MA_DEPT_MST_S" data-dews-code-field="DEPT_CD" data-dews-text-field="DEPT_NM" data-dews-help-title="부서 도움창" data-dews-help-custom="false" data-dews-help-size="medium" />
+        <select id="s_DEPT_CD" name="s_DEPT_CD" class="dews-ui-multicodepicker" data-dews-help-code="H_MA_DEPT_MST_S" data-dews-code-field="DEPT_CD" data-dews-text-field="DEPT_NM" data-dews-help-title="부서 도움창" data-dews-help-custom="false" data-dews-help-size="medium" />
       </span>
     </li>
     <li>
       <label class="dews-ui-multilingual">기간</label>
       <span>
-        <span id="pp1" class="dews-ui-periodpicker basic"></span>
+        <span id="s_START_DT" class="dews-ui-periodpicker basic"></span>
       </span>
     </li>
   </ul>
   <ul class="optional-area">
     <li>
-      <label class="dews-ui-multilingual">라벨</label>
+      <label class="dews-ui-multilingual">휴무유형</label>
       <span>
-        <select id="ddl1" name="ddl1" class="dews-ui-dropdownlist basic" data-dews-value-field="SYSDEF_CD" data-dews-text-field="SYSDEF_NM" data-dews-show-tooltip="true" data-dews-option-label-value="" data-dews-option-label-text="" data-dews-show-value-tooltip="true" data-dews-use-numkey="false"></select>
+        <select id="s_DOF_TP" name="s_DOF_TP" class="dews-ui-dropdownlist basic" data-dews-value-field="SYSDEF_CD" data-dews-text-field="SYSDEF_NM" data-dews-show-tooltip="true" data-dews-option-label-value="" data-dews-option-label-text="" data-dews-show-value-tooltip="true" data-dews-use-numkey="false"></select>
+      </span>
+    </li>
+    <li>
+      <label class="dews-ui-multilingual">사원</label>
+      <span>
+        <input type="text" id="s_EMP_NO" name="s_EMP_NO" class="dews-ui-codepicker basic" data-dews-help-code="H_HR_EMP_MST_S" data-dews-code-field="EMP_NO" data-dews-text-field="KOR_NM" data-dews-help-title="사원 도움창" data-dews-help-custom="false" data-dews-help-size="big" data-dews-ajax="true" />
       </span>
     </li>
   </ul>
@@ -60,7 +66,12 @@
     self.version.view='1.0';
 
 
-    /*b0c72068-ba69-4099-9af5-d9863bacd226*/ //self.cdp1~~~
+    /*b0c72068-ba69-4099-9af5-d9863bacd226*/ /* 
+      * 행사참가직원등록
+      * 작성자 : 서장대
+      * 작성일 : 2023-08-22
+      */
+    //self.cdp1~~~
     
     // 메인버튼 삭제 버튼의 기본 확인 메시지 사용 여부 설정
     self.mainButtons.delete.useDefaultConfirm = false;
@@ -77,11 +88,11 @@
           url: dews.url.getApiUrl('HR', 'PAMODM01800Service', 'pamodm01800_listMaster'),
           data: function () {
             return {
-              start_dt: self.pp1.getStartDate(),
-              end_dt: self.pp1.getEndDate(),
-              dept_cd: self.mcdp1.codes().join('|'),
-              company_cd: self.cdp1.code(),
-              dof_tp: self.ddl1.value()
+              start_dt: self.s_START_DT.getStartDate(),
+              end_dt: self.s_START_DT.getEndDate(),
+              dept_cd: self.s_DEPT_CD.codes().join('|'),
+              company_cd: self.s_COMPANY_CD.code(),
+              dof_tp: self.s_DOF_TP.value()
             };
           }
         }
@@ -89,14 +100,16 @@
       schema: {
         model: {
           fields: [
+            { field: 'COMPANY_CD', editable: false, dataType: 'string' }, 
             { field: 'EMP_NO', editable: false, dataType: 'string' }, 
             { field: 'KOR_NM', editable: false, dataType: 'string' }, 
+            { field: 'ORG', editable: false, dataType: 'string' }, 
             { field: 'DEPT_CD', editable: false, dataType: 'string' }, 
             { field: 'OGRP_CD', editable: false, dataType: 'string' }, 
             { field: 'PSTN_CD', editable: false, dataType: 'string' }, 
             { field: 'JNCO_DT', editable: false, dataType: 'string' }, 
-            { field: 'MNG_DC93', editable: false, dataType: 'string' }, 
-            { field: 'MNG_DC50', editable: false, dataType: 'string' }, 
+            { field: 'PRMT_DT', editable: false, dataType: 'string' }, 
+            { field: 'RETM_DT', editable: false, dataType: 'string' }, 
             { field: 'START_DT', editable: false, dataType: 'string' }, 
             { field: 'END_DT', editable: false, dataType: 'string' }, 
             { field: 'TM_CD_NM', editable: false, dataType: 'string' }, 
@@ -140,25 +153,28 @@
     dews.ui.mainbuttons.add.click(/*d1cbdcb0-8f4b-4a3e-9937-683f712ca116*/ function () {
         try {
             self.grid1.addRow();
+            self.s_EMP_NO.open(); // 행 추가 후 사원도움창 오픈
             //self.grid1.setCellValue(self.grid1.select(), "COMPANY_CD", '5000');
-            self.grid1.setCellValue(self.grid1.select(), "EMP_NO", 'jueunp'); // 사원번호
-            self.grid1.setCellValue(self.grid1.select(), "KOR_NM", '박주은2'); // 성명
-            self.grid1.setCellValue(self.grid1.select(), "DEPT_CD", '1000201'); // 부서코드
-            self.grid1.setCellValue(self.grid1.select(), "OGRP_CD", 'C'); // 직군코드
-            self.grid1.setCellValue(self.grid1.select(), "PSTN_CD", '2E'); // 직급코드
+            // self.grid1.setCellValue(self.grid1.select(), "EMP_NO", 'jueunp'); // 사원번호
+            // self.grid1.setCellValue(self.grid1.select(), "KOR_NM", '박주은2'); // 성명
+            // self.grid1.setCellValue(self.grid1.select(), "DEPT_CD", '1000201'); // 부서코드
+            // self.grid1.setCellValue(self.grid1.select(), "OGRP_CD", 'C'); // 직군코드
+            // self.grid1.setCellValue(self.grid1.select(), "PSTN_CD", '2E'); // 직급코드
     
-            self.grid1.setCellValue(self.grid1.select(), "JNCO_DT", '20220211'); // 입사일
-            self.grid1.setCellValue(self.grid1.select(), "MNG_DC93", '2099-12-30'); // 승격일 ??
-            self.grid1.setCellValue(self.grid1.select(), "MNG_DC50", '2099-12-31'); // 퇴직예정일 ??
-            self.grid1.setCellValue(self.grid1.select(), "START_DT", '20230820'); // 시작일
-            self.grid1.setCellValue(self.grid1.select(), "END_DT", '20230821'); // 종료일
+            // self.grid1.setCellValue(self.grid1.select(), "JNCO_DT", '20220211'); // 입사일
+            // self.grid1.setCellValue(self.grid1.select(), "MNG_DC93", '2099-12-30'); // 승격일 ??
+            // self.grid1.setCellValue(self.grid1.select(), "MNG_DC50", '2099-12-31'); // 퇴직예정일 ??
+            // self.grid1.setCellValue(self.grid1.select(), "START_DT", '20230820'); // 시작일
+            // self.grid1.setCellValue(self.grid1.select(), "END_DT", '20230821'); // 종료일
     
-            self.grid1.setCellValue(self.grid1.select(), "TM_CD_NM", '공통'); // 시간코드명
-            self.grid1.setCellValue(self.grid1.select(), "DOF_TP", '0001'); // 휴무유형
-            self.grid1.setCellValue(self.grid1.select(), "START_TM", '0100'); // 시작시간
-            self.grid1.setCellValue(self.grid1.select(), "END_TM", '0230'); // 종료시간
-            self.grid1.setCellValue(self.grid1.select(), "DOF_TM_CNT", '5'); // 휴무시간
-            self.grid1.setCellValue(self.grid1.select(), "LVE_TM_CNT", '0'); // 이탈시간
+            // self.grid1.setCellValue(self.grid1.select(), "TM_CD_NM", '공통'); // 시간코드명
+            // self.grid1.setCellValue(self.grid1.select(), "DOF_TP", '0001'); // 휴무유형
+            // self.grid1.setCellValue(self.grid1.select(), "START_TM", '0100'); // 시작시간
+            // self.grid1.setCellValue(self.grid1.select(), "END_TM", '0230'); // 종료시간
+            // self.grid1.setCellValue(self.grid1.select(), "DOF_TM_CNT", '5'); // 휴무시간
+            // self.grid1.setCellValue(self.grid1.select(), "LVE_TM_CNT", '0'); // 이탈시간
+    
+    
     
             // self.grid1.setCellValue(self.grid1.select(), "INSERT_ID", 'tjqkd0912');
             // self.grid1.setCellValue(self.grid1.select(), "INSERT_IP", '192.168.0.63');
@@ -265,42 +281,68 @@
             dews.error(error);
         }
     });
-    self.ddl1.setDataSource(self.pipeData_ZC01_10005);
+    self.s_DOF_TP.setDataSource(self.pipeData_ZC01_10005);
+    self.s_EMP_NO.on('codedialog', /*cb79863b-31a6-46cd-b298-9bc53ff1a028*/ function (e) {
+        e.callback = function (s) {
+            // s = 도움창에서 고른 dataItem 한 개
+    
+            // 사번, 성명, 입사일 정보를 그리드에 바인딩
+            self.grid1.setCellValue(self.grid1.select(), 'EMP_NO', s.EMP_NO)
+            self.grid1.setCellValue(self.grid1.select(), 'KOR_NM', s.KOR_NM)
+            self.grid1.setCellValue(self.grid1.select(), 'JNCO_DT', s.JNCO_DT)
+        }
+    });
     dews.ui.grid(self.$grid1, {
       dataSource: self.ds1,
       editable: true,
+      selectable: true,
       sortable: false,
+      noData: true,
+      noDataMessage: '데이터가 없습니다',
       copyMode: 'cell',
       columns: [
         {
+          field: 'COMPNAY_CD',
+          title: '회사코드',
+          width: 80,
+          visible: false
+        },
+        {
           field: 'EMP_NO',
           title: '사원번호',
-          width: 60,
+          width: 80,
           attributes: { class: 'required' }
         },
         {
           field: 'KOR_NM',
-          title: '성명',
-          width: 90,
+          title: '사원명',
+          width: 75,
           align: 'left',
+          attributes: { class: 'readonly' }
+        },
+        {
+          field: 'ORG',
+          title: '소속',
+          width: 210,
           attributes: { class: 'readonly' }
         },
         {
           field: 'DEPT_CD',
           title: '부서코드',
           width: 80,
+          visible: false,
           attributes: { class: 'readonly' }
         },
         {
           field: 'OGRP_CD',
-          title: '직군코드',
-          width: 80,
+          title: '직군',
+          width: 60,
           attributes: { class: 'readonly' }
         },
         {
           field: 'PSTN_CD',
-          title: '직급코드',
-          width: 80,
+          title: '직급',
+          width: 60,
           attributes: { class: 'readonly' }
         },
         {
@@ -318,16 +360,32 @@
           }
         },
         {
-          field: 'MNG_DC93',
+          field: 'PRMT_DT',
           title: '승격일',
           width: 60,
-          attributes: { class: 'readonly' }
+          attributes: { class: 'readonly' },
+          formats: {
+            type: 'date',
+            format: 'yyyy-MM-dd'
+          },
+          editor: {
+            type: 'date',
+            format: 'yyyy-MM-dd'
+          }
         },
         {
-          field: 'MNG_DC50',
+          field: 'RETM_DT',
           title: '퇴직예정일',
           width: 60,
-          attributes: { class: 'readonly' }
+          attributes: { class: 'readonly' },
+          formats: {
+            type: 'date',
+            format: 'yyyy-MM-dd'
+          },
+          editor: {
+            type: 'date',
+            format: 'yyyy-MM-dd'
+          }
         },
         {
           field: 'START_DT',
@@ -359,35 +417,62 @@
         },
         {
           field: 'TM_CD_NM',
-          title: '시간코드명',
+          title: '시간\n코드',
           width: 90,
-          align: 'left',
           attributes: { class: 'readonly' }
         },
         {
           field: 'DOF_TP',
-          title: '휴무유형',
-          width: 60
+          title: '휴무\n유형',
+          width: 60,
+          editor: {
+            type: 'dropDown',
+            dataSource: self.pipeData,
+            dataValueField: 'SYSDEF_CD',
+            dataTextField: 'SYSDEF_NM'
+          }
         },
         {
           field: 'START_TM',
-          title: '시작시간',
-          width: 60
+          title: '시작\n시간',
+          width: 60,
+          formats: {
+            type: 'time',
+            format: 'HH:MM'
+          }
         },
         {
           field: 'END_TM',
-          title: '종료시간',
-          width: 60
+          title: '종료\n시간',
+          width: 60,
+          formats: {
+            type: 'time',
+            format: 'HH:MM'
+          }
         },
         {
           field: 'DOF_TM_CNT',
-          title: '휴무시간수',
-          width: 60
+          title: '휴무\n시간',
+          width: 60,
+          formats: {
+            type: 'number'
+          },
+          editor: {
+            type: 'number',
+            max: 99999
+          }
         },
         {
           field: 'LVE_TM_CNT',
-          title: '이탈시간수',
-          width: 60
+          title: '이탈\n시간',
+          width: 60,
+          formats: {
+            type: 'number'
+          },
+          editor: {
+            type: 'number',
+            max: 99999
+          }
         }
       ],
       fixed: {
