@@ -1,6 +1,6 @@
-<!--##517c7883-98d1-4a4a-8e1f-4da23cb3e8bf##-->
+<!--##7780a766-47ed-46f0-9730-178c8aa29123##-->
 <!--##PAMODM01800##-->
-<!--##8dGac6EPOuXIq34+VrGSj+MIzjp8sXJX4oqO6nfeWbE=##-->
+<!--##77dOo0reOo1T3REUIM/llxwrPDQeZBj1QHm3KJBC9Ko=##-->
 <!--
   DEWS UI/UX IDE - Build Result - v1.5
   # PageID: PAMODM01800
@@ -14,9 +14,9 @@
 <div id="conditionpanel1" class="dews-ui-condition-panel">
   <ul class="required-area">
     <li>
-      <label class="dews-ui-multilingual">사업장</label>
+      <label class="dews-ui-multilingual">회사</label>
       <span>
-        <input type="text" id="s_COMPANY_CD" name="s_COMPANY_CD" class="dews-ui-codepicker" data-dews-help-code="H_MA_COMPANY_S" data-dews-code-field="COMPANY_CD" data-dews-text-field="COMPANY_NM" data-dews-help-title="회사 도움창" data-dews-help-custom="false" data-dews-help-size="medium" data-dews-use-keyword="false" />
+        <select id="s_COMPANY_CD" name="s_COMPANY_CD" class="dews-ui-multicodepicker basic" data-dews-help-code="H_MA_COMPANY_S" data-dews-code-field="COMPANY_CD" data-dews-text-field="COMPANY_NM" data-dews-help-title="회사 도움창" data-dews-help-custom="false" data-dews-help-size="medium" />
       </span>
     </li>
     <li>
@@ -39,7 +39,7 @@
         <select id="s_DOF_TP" name="s_DOF_TP" class="dews-ui-dropdownlist basic" data-dews-value-field="SYSDEF_CD" data-dews-text-field="SYSDEF_NM" data-dews-show-tooltip="true" data-dews-option-label-value="" data-dews-option-label-text="" data-dews-show-value-tooltip="true" data-dews-use-numkey="false"></select>
       </span>
     </li>
-    <li>
+    <li style="display: none;">
       <label class="dews-ui-multilingual">사원</label>
       <span>
         <input type="text" id="s_EMP_NO" name="s_EMP_NO" class="dews-ui-codepicker basic" data-dews-help-code="H_HR_EMP_MST_S" data-dews-code-field="EMP_NO" data-dews-text-field="KOR_NM" data-dews-help-title="사원 도움창" data-dews-help-custom="false" data-dews-help-size="big" data-dews-ajax="true" />
@@ -88,11 +88,11 @@
           url: dews.url.getApiUrl('HR', 'PAMODM01800Service', 'pamodm01800_listMaster'),
           data: function () {
             return {
+              dof_tp: self.s_DOF_TP.value(),
               start_dt: self.s_START_DT.getStartDate(),
               end_dt: self.s_START_DT.getEndDate(),
               dept_cd: self.s_DEPT_CD.codes().join('|'),
-              company_cd: self.s_COMPANY_CD.code(),
-              dof_tp: self.s_DOF_TP.value()
+              company_cd: self.s_COMPANY_CD.codes().join('|')
             };
           }
         }
@@ -102,8 +102,8 @@
           fields: [
             { field: 'COMPANY_CD', editable: false, dataType: 'string' }, 
             { field: 'EMP_NO', editable: false, dataType: 'string' }, 
-            { field: 'KOR_NM', editable: false, dataType: 'string' }, 
             { field: 'ORG', editable: false, dataType: 'string' }, 
+            { field: 'KOR_NM', editable: false, dataType: 'string' }, 
             { field: 'DEPT_CD', editable: false, dataType: 'string' }, 
             { field: 'OGRP_CD', editable: false, dataType: 'string' }, 
             { field: 'PSTN_CD', editable: false, dataType: 'string' }, 
@@ -117,7 +117,15 @@
             { field: 'START_TM', editable: false, dataType: 'string' }, 
             { field: 'END_TM', editable: false, dataType: 'string' }, 
             { field: 'DOF_TM_CNT', editable: false, dataType: 'number' }, 
-            { field: 'LVE_TM_CNT', editable: false, dataType: 'number' }
+            { field: 'LVE_TM_CNT', editable: false, dataType: 'number' }, 
+            { field: 'INSERT_ID', editable: false, dataType: 'string' }, 
+            { field: 'INSERT_IP', editable: false, dataType: 'string' }, 
+            { field: 'INSERT_DTS', editable: false, dataType: 'string' }, 
+            { field: 'UPDATE_ID', editable: false, dataType: 'string' }, 
+            { field: 'UPDATE_DTS', editable: false, dataType: 'string' }, 
+            { field: 'UPDATE_IP', editable: false, dataType: 'string' }, 
+            { field: 'INSERT_MCADDR_NM', editable: false, dataType: 'string' }, 
+            { field: 'UPDATE_MCADDR_NM', editable: false, dataType: 'string' }
           ]
     
         }
@@ -280,6 +288,14 @@
             console.error(error);
             dews.error(error);
         }
+    });
+    self.s_COMPANY_CD.setHelpParams(function () {
+      return {
+        company_cd: '',
+        cd_company_exc: '',
+        all_yn: '',
+        bizr_no_exc_yn: ''
+      };
     });
     self.s_DOF_TP.setDataSource(self.pipeData_ZC01_10005);
     self.s_EMP_NO.on('codedialog', /*cb79863b-31a6-46cd-b298-9bc53ff1a028*/ function (e) {
