@@ -1,6 +1,6 @@
-<!--##7780a766-47ed-46f0-9730-178c8aa29123##-->
+<!--##6bb1a08a-62d2-41b9-96aa-7408098cfe79##-->
 <!--##PAMODM01800##-->
-<!--##77dOo0reOo1T3REUIM/llxwrPDQeZBj1QHm3KJBC9Ko=##-->
+<!--##CZkAGwQmBdHui2+jbWRGbT3xYwAWsOUcYnnpV58CL6k=##-->
 <!--
   DEWS UI/UX IDE - Build Result - v1.5
   # PageID: PAMODM01800
@@ -66,12 +66,16 @@
     self.version.view='1.0';
 
 
-    /*b0c72068-ba69-4099-9af5-d9863bacd226*/ /* 
+    /*b0c72068-ba69-4099-9af5-d9863bacd226*/ 
+    //# sourceURL=PAMODM01800.js
+    
+    /* 
       * 행사참가직원등록
       * 작성자 : 서장대
       * 작성일 : 2023-08-22
       */
     //self.cdp1~~~
+    
     
     // 메인버튼 삭제 버튼의 기본 확인 메시지 사용 여부 설정
     self.mainButtons.delete.useDefaultConfirm = false;
@@ -131,12 +135,12 @@
         }
       }
     });
-    dews.api.get(dews.url.getApiUrl('CM', 'CommonCodeDtlService', 'common_ci_codeDtl_list'),{
+    dews.api.get(dews.url.getApiUrl('CM', 'CommonCodeDtlService', 'common_codeDtl_list'),{
       async: false,
       data: {
           end_dt: '',
           foreign_yn: '',
-          field_cd_pipe: 'ZC01_10005',
+          field_cd_pipe: 'ZC01_10005|p00660',
           module_cd: 'HR',
           syscode_yn: '',
           keyword: '',
@@ -144,14 +148,20 @@
       }
     }).done(function (data) {
       var ar_ZC01_10005 = new Array();
+      var ar_p00660 = new Array();
     
       for (var i = 0; i < data.length; i++) {
         if (data[i].FIELD_CD == "ZC01_10005") { 
           ar_ZC01_10005.push(data[i]); 
     
         }
+        else if (data[i].FIELD_CD == "p00660") { 
+          ar_p00660.push(data[i]); 
+    
+        }
       }
       self.pipeData_ZC01_10005 = dews.ui.dataSource('pipeData_ZC01_10005',  { data: ar_ZC01_10005 });
+      self.pipeData_p00660 = dews.ui.dataSource('pipeData_p00660',  { data: ar_p00660 });
       self.pipeData = dews.ui.dataSource('pipeData', { data: data });
       
     });
@@ -300,9 +310,6 @@
     self.s_DOF_TP.setDataSource(self.pipeData_ZC01_10005);
     self.s_EMP_NO.on('codedialog', /*cb79863b-31a6-46cd-b298-9bc53ff1a028*/ function (e) {
         e.callback = function (s) {
-            // s = 도움창에서 고른 dataItem 한 개
-    
-            // 사번, 성명, 입사일 정보를 그리드에 바인딩
             self.grid1.setCellValue(self.grid1.select(), 'EMP_NO', s.EMP_NO)
             self.grid1.setCellValue(self.grid1.select(), 'KOR_NM', s.KOR_NM)
             self.grid1.setCellValue(self.grid1.select(), 'JNCO_DT', s.JNCO_DT)
@@ -353,7 +360,13 @@
           field: 'OGRP_CD',
           title: '직군',
           width: 60,
-          attributes: { class: 'readonly' }
+          attributes: { class: 'readonly' },
+          formats: {
+            type: 'dataSource',
+            dataSource: self.pipeData,
+            dataValueField: 'SYSDEF_CD',
+            dataTextField: 'SYSDEF_NM'
+          }
         },
         {
           field: 'PSTN_CD',
